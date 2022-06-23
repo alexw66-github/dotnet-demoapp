@@ -29,7 +29,7 @@ stages:
       displayName: 'dotnet publish'
       inputs:
         command: 'publish'
-        publishWebProjects: false
+        publishWebProjects: true
         zipAfterPublish: true
         modifyOutputPath: true
         arguments: '-o $(Build.ArtifactStagingDirectory)'
@@ -49,7 +49,7 @@ stages:
         buildType: 'current'
         downloadType: 'single'
         artifactName: 'drop'
-        downloadPath: '$(Build.ArtifactStagingDirectory)'
+        downloadPath: '$(Build.DefaultWorkingDirectory)'
     - task: AzureWebApp@1
       inputs:
         azureSubscription: 'Pay-As-You-Go(df03f5e7-571e-4ef7-bba2-3e272468675f)'
@@ -58,4 +58,4 @@ stages:
         deployToSlotOrASE: true
         resourceGroupName: 'DemoApp-alexw66_group'
         slotName: 'production'
-        package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+        package: '$(Build.DefaultWorkingDirectory)/**/*.zip'
