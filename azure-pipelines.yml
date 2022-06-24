@@ -39,23 +39,23 @@ stages:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'drop'
         publishLocation: 'Container'
-- stage: deploy
-  displayName: 'Deploy to test'
-  jobs:
-  - job: deploy
-    steps:
-    - task: DownloadBuildArtifacts@1
-      inputs:
-        buildType: 'current'
-        downloadType: 'single'
-        artifactName: 'drop'
-        downloadPath: '$(Build.DefaultWorkingDirectory)'
-    - task: AzureWebApp@1
-      inputs:
-        azureSubscription: 'Pay-As-You-Go(df03f5e7-571e-4ef7-bba2-3e272468675f)'
-        appType: 'webAppLinux'
-        appName: 'DemoApp-alexw66'
-        deployToSlotOrASE: true
-        resourceGroupName: 'DemoApp-alexw66_group'
-        slotName: 'production'
-        package: '$(Build.DefaultWorkingDirectory)/**/*.zip'
+# - stage: deploy
+#   displayName: 'Deploy to test'
+#   jobs:
+#   - job: deploy
+#     steps:
+#     - task: DownloadBuildArtifacts@1
+#       inputs:
+#         buildType: 'current'
+#         downloadType: 'single'
+#         artifactName: 'drop'
+#         downloadPath: '$(Build.DefaultWorkingDirectory)'
+#     - task: AzureWebApp@1
+#       inputs:
+        # azureSubscription: 'Pay-As-You-Go(df03f5e7-571e-4ef7-bba2-3e272468675f)'
+        # appType: 'webAppLinux'
+        # appName: 'DemoApp-alexw66'
+        # deployToSlotOrASE: true
+        # resourceGroupName: 'DemoApp-alexw66_group'
+        # slotName: 'production'
+        # package: '$(Build.DefaultWorkingDirectory)/**/*.zip'
