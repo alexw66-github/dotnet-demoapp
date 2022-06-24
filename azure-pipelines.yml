@@ -47,6 +47,7 @@ stages:
         repository: 'dotnet-demoapp'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
+        buildContext: $(Build.Repository.LocalPath)
 # - stage: deploy
 #   displayName: 'Deploy to test'
 #   jobs:
