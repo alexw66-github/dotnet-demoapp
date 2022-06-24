@@ -58,7 +58,7 @@ stages:
     - task: Docker@2
       inputs:
         containerRegistry: 'Docker'
-        repository: 'dotnet-demoapp'
+        repository: 'alexw66/dotnet-demoapp'
         command: 'push'
         tags: |
           $(Build.BuildId)
