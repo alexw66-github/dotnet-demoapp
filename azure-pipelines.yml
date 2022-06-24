@@ -49,9 +49,21 @@ stages:
       inputs:
         containerRegistry: 'Docker'
         repository: 'dotnet-demoapp'
-        command: 'buildAndPush'
+        command: 'build'
         Dockerfile: '**/Dockerfile'
-        buildContext: $(Build.Repository.LocalPath)
+        buildContext: '$(Build.SourcesDirectory)'
+        tags: |
+          $(Build.BuildId)
+          latest
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'Docker'
+        repository: 'dotnet-demoapp'
+        command: 'push'
+        tags: |
+          $(Build.BuildId)
+          latest
+
 # - stage: deploy
 #   displayName: 'Deploy to test'
 #   jobs:
